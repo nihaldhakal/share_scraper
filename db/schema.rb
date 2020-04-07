@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_090458) do
+ActiveRecord::Schema.define(version: 2020_04_07_163456) do
+
+  create_table "earnings_per_shares", force: :cascade do |t|
+    t.string "quarter"
+    t.float "eps_value"
+    t.date "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "price_histories", force: :cascade do |t|
+    t.date "date"
+    t.float "ltp"
+    t.float "change"
+    t.float "high"
+    t.float "low"
+    t.float "open"
+    t.integer "qty"
+    t.float "turnover"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "shares", force: :cascade do |t|
     t.string "share_name"

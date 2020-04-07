@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-04-07
+  ltp: 1.5
+  change: 1.5
+  high: 1.5
+  low: 1.5
+  open: 1.5
+  qty: 1
+  turnover: 1.5
+
+two:
+  date: 2020-04-07
+  ltp: 1.5
+  change: 1.5
+  high: 1.5
+  low: 1.5
+  open: 1.5
+  qty: 1
+  turnover: 1.5
