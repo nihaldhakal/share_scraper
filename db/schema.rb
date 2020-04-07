@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_163828) do
+ActiveRecord::Schema.define(version: 2020_04_07_164416) do
 
   create_table "earnings_per_shares", force: :cascade do |t|
     t.string "quarter"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_163828) do
     t.date "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "share_id"
+    t.index ["share_id"], name: "index_earnings_per_shares_on_share_id"
   end
 
   create_table "price_histories", force: :cascade do |t|
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_04_07_163828) do
     t.float "turnover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "share_id"
+    t.index ["share_id"], name: "index_price_histories_on_share_id"
   end
 
   create_table "shares", force: :cascade do |t|
