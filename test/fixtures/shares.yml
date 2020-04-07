@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  share_name: MyString
+  url: MyString
+  price_to_earning: 1.5
+
+two:
+  share_name: MyString
+  url: MyString
+  price_to_earning: 1.5

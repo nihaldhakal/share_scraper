@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shares</h1>
+
+<%= link_to 'New Share', new_share_path, {class: "btn btn-default"}  %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Share Name</th>
+    <th>Url</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @shares.each do |share| %>
+    <tr style="min-height: 60px">
+      <td><%= share.share_name %></td>
+      <td><%= share.url %></td>
+      <!--      <td><%#= link_to 'Price history', share %></td>-->
+      <td><%= link_to 'Delete', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

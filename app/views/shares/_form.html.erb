@@ -1,0 +1,21 @@
+<%= form_for share, html: { multipart: true }  do |f| %>
+  <% if share.errors.any? %>
+    <div id="error_explanation">
+      <% url_empty_error_message = share.errors.select{ :v }.join(" ").titleize %>
+      <% if url_empty_error_message.present? %>
+        <%= url_empty_error_message %>
+      <% else %>
+        The provided url doesn't look like a valid Merolagani  URL. Please re-enter!
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url, size: 100 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
