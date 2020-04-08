@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_164416) do
+ActiveRecord::Schema.define(version: 2020_04_08_133721) do
 
   create_table "earnings_per_shares", force: :cascade do |t|
     t.string "quarter"
-    t.float "eps_value"
+    t.float "value"
     t.date "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
