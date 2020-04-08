@@ -1,22 +1,22 @@
-
-<div class="row" style="background-color: rgba(204, 209, 210, 0.23); padding: 20px ">
-  <div class="col-sm-6">
-    <p>
-      <strong>Share Name:</strong>
-    <h1>
-      <%= @share.share_name %>
-    </h1>
-    </p>
-    <hr>
-    <p>
-      <strong>share Url:</strong>
-    <h4>
-      <%= @share.url %>
-    </h4>
-    </p>
+<% if current_user.id == @share.user_id %>
+  <div class="row" style="background-color: rgba(204, 209, 210, 0.23); padding: 20px ">
+    <div class="col-sm-6">
+      <p>
+        <strong>Share Name:</strong>
+      <h1>
+        <%= @share.share_name %>
+      </h1>
+      </p>
+      <hr>
+      <p>
+        <strong>share Url:</strong>
+      <h4>
+        <%= @share.url %>
+      </h4>
+      </p>
+    </div>
   </div>
-</div>
-
+<% end %>
 <hr>
 
 <%#= render "price_history_chart"  %>

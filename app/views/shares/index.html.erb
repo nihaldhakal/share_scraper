@@ -1,28 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%if current_user.present? %>
+      <p id="notice"><%= notice %></p>
 
-<h1>Shares</h1>
+      <h1>Shares</h1>
 
-<%= link_to 'New Share', new_share_path, {class: "btn btn-default"}  %>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Share Name</th>
-    <th>Url</th>
-    <th colspan="2"></th>
-  </tr>
-  </thead>
+      <%= link_to 'New Share', new_share_path, {class: "btn btn-default"}  %>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Share Name</th>
+          <th>Url</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
 
-  <tbody>
-  <% @shares.each do |share| %>
-    <tr style="min-height: 60px">
-      <td><%= share.share_name %></td>
-      <td><%= share.url %></td>
-      <!--      <td><%#= link_to 'Price history', share %></td>-->
-      <td><%= link_to 'Delete', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+        <tbody>
+        <% @shares.each do |share| %>
+          <% if current_user.id == share.user_id %>
+            <tr style="min-height: 60px">
+              <td><%= share.share_name %></td>
+              <td><%= share.url %></td>
+              <!--      <td><%#= link_to 'Price history', share %></td>-->
+              <td><%= link_to 'Delete', share, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+      <br>
+<%else %>
+  <h1>You have to <%= link_to("Sign In", new_user_session_path,
+                              class: "active btn btn-primary")%> or
+    <%= link_to "Sign Up", new_user_registration_path, class: "active btn btn-primary" %>
+  </h1>
+<% end %>
 
-<br>
 

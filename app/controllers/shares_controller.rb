@@ -15,7 +15,7 @@ class SharesController < ApplicationController
   end
 
   def create
-    @share = Share.new(share_params)
+    @share = current_user.shares.new(share_params)
     respond_to do |format|
       if @share.save
         format.html { redirect_to @share, notice: 'Share was successfully created '}
