@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_133721) do
+ActiveRecord::Schema.define(version: 2020_04_08_135321) do
 
   create_table "earnings_per_shares", force: :cascade do |t|
     t.string "quarter"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_133721) do
   end
 
   create_table "shares", force: :cascade do |t|
-    t.string "share_name"
+    t.string "name"
     t.string "url"
     t.float "price_to_earning"
     t.datetime "created_at", null: false

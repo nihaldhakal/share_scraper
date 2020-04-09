@@ -15,8 +15,8 @@ gem 'devise', '~> 4.2'
 gem 'bootstrap-sass-rails', '~> 3.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'nokogiri'
-gem 'httparty'
+gem 'httparty', '0.14'
+gem 'nokogiri', '1.9'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

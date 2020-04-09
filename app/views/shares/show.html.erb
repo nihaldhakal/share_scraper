@@ -4,14 +4,21 @@
       <p>
         <strong>Share Name:</strong>
       <h1>
-        <%= @share.share_name %>
+        <%= @share.name %>
       </h1>
       </p>
       <hr>
       <p>
         <strong>share Url:</strong>
       <h4>
-        <%= @share.url %>
+        <%= link_to @share.url, @share.url %>
+      </h4>
+      </p>
+      <hr>
+      <p>
+        <strong>P/E:</strong>
+      <h4>
+        <%= @share.price_to_earning %>
       </h4>
       </p>
     </div>
