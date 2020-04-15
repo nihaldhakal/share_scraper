@@ -11,13 +11,17 @@ class SharesController < ApplicationController
   end
 
   def new
-    @share = Share.new
+    @share = current_user.shares.build
+    @share.earnings_per_shares.build
   end
 
   def create
-    @share = current_user.shares.new(share_params)
+    @share = current_user.shares.build(share_params)
     respond_to do |format|
       if @share.save
+        debugger
+        @share.earnings_per_shares.new(earnings_per_share_params.merge(share_id: @share.id))
+        @eps_value = @share.after_creation_scrape
         format.html { redirect_to @share, notice: 'Share was successfully created '}
         format.json {render :show, status: :created, location: @share}
       else
@@ -59,6 +63,10 @@ class SharesController < ApplicationController
 
   def share_params
     params.require(:share).permit(:share_name, :url, :price_to_earning)
+  end
+
+  def earnings_per_share_params
+    params.permit(:value)
   end
 
 end

@@ -10,7 +10,8 @@
           <th>Share Name</th>
           <th>Url</th>
           <th>P/E</th>
-          <th colspan="3"></th>
+          <th>EPS</th>
+<!--          <th colspan="4"></th>-->
         </tr>
         </thead>
 
@@ -21,6 +22,11 @@
               <td><%= link_to share.name, share_path(share) %></td>
               <td><%= link_to share.url,share.url %></td>
               <td><%= share.price_to_earning %></td>
+<!--              <td> <%# share.earnings_per_shares.each do |eps| %>-->
+                <%# if share.id == eps.share_id %>
+                  <%#= eps.value %>
+                <%# end %>
+<!--              <%# end %></td>-->
               <!--      <td><%#= link_to 'Price history', share %></td>-->
               <td><%= link_to 'Delete', share, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default" %></td>
             </tr>

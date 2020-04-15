@@ -9,21 +9,26 @@ class Scraper
   end
 
   def name
-    item_container.css(".page-header").text() rescue nil
+    item_container.css('.page-header').text
   end
 
   def price_to_earning
-    item_container.css("table td").children[17].text() rescue nil
+    item_container.css('table td').children[17].text
   end
-
+  
+  def value
+    item_container.css('table td').children[14].text
+  end
+  
   def item_container
-    parsed_data.css(".container") rescue nil
+    parsed_data.css('.container')
   end
 
   def attributes
     {
-        name: name,
-        price_to_earning: price_to_earning
+      name: name,
+      price_to_earning: price_to_earning,
+      value: value
     }
   end
 end
