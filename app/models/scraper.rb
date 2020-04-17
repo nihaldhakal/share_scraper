@@ -9,15 +9,15 @@ class Scraper
   end
 
   def name
-    item_container.css('.page-header').text
+    item_container.css('.page-header').text.strip.gsub(/\s+/,' ')
   end
 
   def price_to_earning
-    item_container.css('table td').children[17].text
+    item_container.css('table td').children[17].text.strip.gsub(/\s+/,' ')
   end
   
   def value
-    item_container.css('table td').children[14].text
+    item_container.css('table td').children[14].text.strip.gsub(/\s+/,' ')
   end
   
   def item_container

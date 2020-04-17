@@ -1,40 +1,38 @@
 <%if current_user.present? %>
-      <p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-      <h1>Shares</h1>
+  <h1>Shares</h1>
 
-      <%= link_to 'New Share', new_share_path, {class: "btn btn-default"}  %>
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>Share Name</th>
-          <th>Url</th>
-          <th>P/E</th>
-          <th>EPS</th>
-<!--          <th colspan="4"></th>-->
+  <%= link_to 'New Share', new_share_path, {class: "btn btn-default"}  %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Share Name</th>
+      <th>Url</th>
+      <th>P/E</th>
+      <th>EPS</th>
+      <!--          <th colspan="4"></th>-->
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @shares.each do |share| %>
+      <% if current_user.id == share.user_id %>
+        <tr style="min-height: 60px">
+          <td><%= link_to share.name, share_path(share) %></td>
+          <td><%= link_to share.url,share.url %></td>
+          <td><%= share.price_to_earning %></td>
+          <td><% eps = share.earnings_per_shares.find_by(share_id: share.id)%>
+            <%= eps.value %>, <%= eps.quarter %>, <%= eps.year %>
+          </td>
+          <!--      <td><%#= link_to 'Price history', share %></td>-->
+          <td><%= link_to 'Delete', share, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default" %></td>
         </tr>
-        </thead>
-
-        <tbody>
-        <% @shares.each do |share| %>
-          <% if current_user.id == share.user_id %>
-            <tr style="min-height: 60px">
-              <td><%= link_to share.name, share_path(share) %></td>
-              <td><%= link_to share.url,share.url %></td>
-              <td><%= share.price_to_earning %></td>
-<!--              <td> <%# share.earnings_per_shares.each do |eps| %>-->
-                <%# if share.id == eps.share_id %>
-                  <%#= eps.value %>
-                <%# end %>
-<!--              <%# end %></td>-->
-              <!--      <td><%#= link_to 'Price history', share %></td>-->
-              <td><%= link_to 'Delete', share, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default" %></td>
-            </tr>
-          <% end %>
-        <% end %>
-        </tbody>
-      </table>
-      <br>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+  <br>
 <%else %>
   <h1>You have to <%= link_to("Sign In", new_user_session_path,
                               class: "active btn btn-primary")%> or

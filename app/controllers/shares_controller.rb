@@ -1,13 +1,13 @@
 class SharesController < ApplicationController
 
-  before_action :set_share, only: [:show, :edit, :update, :destroy]
+  before_action :set_share, only: [:show, :edit, :update,:earnings_per_shares, :destroy]
 
   def index
     @shares = Share.all
   end
 
   def show
-
+    @eps = @share.earnings_per_shares.find_by(share_id: @share.id)
   end
 
   def new
@@ -19,9 +19,7 @@ class SharesController < ApplicationController
     @share = current_user.shares.build(share_params)
     respond_to do |format|
       if @share.save
-        debugger
-        @share.earnings_per_shares.new(earnings_per_share_params.merge(share_id: @share.id))
-        @eps_value = @share.after_creation_scrape
+        @share.set_earning_per_share
         format.html { redirect_to @share, notice: 'Share was successfully created '}
         format.json {render :show, status: :created, location: @share}
       else
@@ -47,6 +45,10 @@ class SharesController < ApplicationController
     end
   end
 
+  def earnings_per_shares
+    @earnings_per_shares = @share.earnings_per_shares.where(share_id: @share.id)
+  end
+
   def destroy
     @share.destroy
     respond_to do |format|
@@ -63,10 +65,6 @@ class SharesController < ApplicationController
 
   def share_params
     params.require(:share).permit(:share_name, :url, :price_to_earning)
-  end
-
-  def earnings_per_share_params
-    params.permit(:value)
   end
 
 end

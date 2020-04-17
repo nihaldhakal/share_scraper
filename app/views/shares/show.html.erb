@@ -23,9 +23,9 @@
       </p>
       <hr>
       <p>
-        <strong>EPS:</strong>
+        <strong><%= link_to 'EPS:',earnings_per_shares_path(@share) ,class: "btn btn-default" %></strong>
       <h4>
-        <%#= @eps_value %>
+          <%= @eps.value %>
       </h4>
       </p>
     </div>
